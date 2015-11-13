@@ -71,25 +71,29 @@ Assim indicando o processo necessário para ouvir os eventos de mudança na temp
 
 <p>Nas Linhas de código evidenciadas a seguir é possível observar o método de chamada, +inicializaControle(), do processo indicado acima.</p>
 
-<ol>
-<li> public class ControlAr {<br>
-</li>
-<li>     public static void inicializaControle(int novaTemperatura){</li>
-<li>         //cria sensores</li>
-<li>         Sensor s1 = new Sensor();</li>
-<li>         Sensor s2 = new Sensor();</li>
-<li>         Sensor s3 = new Sensor();</li>
-<li>         //cria ar condicionado</li>
-<li>         ArCondicionado arCond = new ArCondicionado(); </li>
-<li>         //add sensores</li>
-<li>         arCond.registerObserver(s1); </li>
-<li>         arCond.registerObserver(s2); </li>
-<li>         arCond.registerObserver(s3); </li>
-<li>         //seta nova temparatura</li>
-<li>         arCond.setNovaTemp(novaTemperatura);</li>
-<li>     }</li>
-<li> }</li>
-</ol>
+<p>`</p>
+
+<p>public class ControlAr {    </p>
+
+<pre><code>public static void inicializaControle(int novaTemperatura){
+    //cria sensores
+    Sensor s1 = new Sensor();
+    Sensor s2 = new Sensor();
+    Sensor s3 = new Sensor();
+    //cria ar condicionado
+    ArCondicionado arCond = new ArCondicionado(); 
+    //add sensores
+     arCond.registerObserver(s1); 
+     arCond.registerObserver(s2); 
+     arCond.registerObserver(s3); 
+     //seta nova temparatura
+     arCond.setNovaTemp(novaTemperatura);
+ }
+</code></pre>
+
+<p>}</p>
+
+<p>`</p>
 
 <p>É dado o processo de controle seguindo esta sequência:</p>
 
