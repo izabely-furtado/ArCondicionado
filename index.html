@@ -1,0 +1,137 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/github-dark.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Arcondicionado</title>
+  <meta name="description" content="Exercício 2 de 8 da Lista de Padrões de Projeto">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Arcondicionado</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">Exercício 2 de 8 da Lista de Padrões de Projeto</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/izabely-furtado/ArCondicionado/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/izabely-furtado/ArCondicionado/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/izabely-furtado/ArCondicionado" class="code">View Arcondicionado on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h3>
+<a id="diagrama" class="anchor" href="#diagrama" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Diagrama</strong>
+</h3>
+
+<p><img src="https://github.com/izabely-furtado/ArCondicionado/blob/master/Diagramas/Class%20Diagram%20do%20Padr%C3%A3o%20Observador%20Implementado.png?raw=true" alt=""></p>
+
+<h3>
+<a id="explicação" class="anchor" href="#explica%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Explicação</strong>
+</h3>
+
+<p>*<em>Interface pública Observer: *</em></p>
+
+<p>As classes que implementarem essa interface, que por sua vez conterá um método de atualização (update), deverão ser notificadas quando da atualização ou mudança do estado do objeto observado.</p>
+
+<p>*<em>Classe Observable: *</em></p>
+
+<p>Define a classe que será observada. Essa classe geralmente guarda como atributo uma lista (Lista Java comum, Collections) dos observers associados à mesma, para que os mesmos possam ser notificados quando a mudança acontecer na classe.</p>
+
+<p><strong>Alguns métodos utilizados:</strong></p>
+
+<ul>
+<li>registerObserver(Observer observer): Adiciona o observer passado por parâmetro à lista de observadores do objeto observado (Sensor);</li>
+<li>deleteObserver(Observer observer): Remove o observer passado por parâmetro da lista de observadores do objeto observado (Sensor);</li>
+<li>setNovaTemperatura(): Verifica se o objeto sofreu alguma mudança, no caso do Sensor verificando  se houve mudança na temperatura;</li>
+<li>notifyObservers(): Notifica todos os observers caso haja alguma mudança no objeto observado.</li>
+</ul>
+
+<p>Basicamente as duas interfaces acima descritas no diagrama foram implementadas como indicado na descrição.
+Sendo que a setNovaTempratura() está descrita no diagrama como é feita a verificação do sensor. 
+Assim indicando o processo necessário para ouvir os eventos de mudança na temperatura e notificar os respectivos sensores que irão validar tal mudança.</p>
+
+<p>Nas Linhas de código evidenciadas a seguir é possível observar o método de chamada, +inicializaControle(), do processo indicado acima.</p>
+
+<ol>
+<li> public class ControlAr {<br>
+</li>
+<li>     public static void inicializaControle(int novaTemperatura){</li>
+<li>         //cria sensores</li>
+<li>         Sensor s1 = new Sensor();</li>
+<li>         Sensor s2 = new Sensor();</li>
+<li>         Sensor s3 = new Sensor();</li>
+<li>         //cria ar condicionado</li>
+<li>         ArCondicionado arCond = new ArCondicionado(); </li>
+<li>         //add sensores</li>
+<li>         arCond.registerObserver(s1); </li>
+<li>         arCond.registerObserver(s2); </li>
+<li>         arCond.registerObserver(s3); </li>
+<li>         //seta nova temparatura</li>
+<li>         arCond.setNovaTemp(novaTemperatura);</li>
+<li>     }</li>
+<li> }</li>
+</ol>
+
+<p>É dado o processo de controle seguindo esta sequência:</p>
+
+<ul>
+<li>é feita a criação dos 3 sensores, </li>
+<li>se cria o ArCondicionado, </li>
+<li>se adiciona os sensores ao arcondicionado</li>
+<li>então se manipula a nova temperatura dada como entrada</li>
+</ul>
+
+<h3>
+<a id="motivação" class="anchor" href="#motiva%C3%A7%C3%A3o" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Motivação</strong>
+</h3>
+
+<p>Esse padrão é extremamente importante e útil devido aos seus inúmeros benefícios e boas práticas. </p>
+
+<p>Entre as boas práticas e princípios fundamentais que o padrão Observer nos proporciona temos, entre diversos outros: </p>
+
+<ul>
+<li>a separação dos aspectos que variam na aplicação, </li>
+<li>a programação para interface e não para uma implementação, </li>
+<li>prioridade à composição em relação a herança, </li>
+<li>interdependência entre os objetos. </li>
+</ul>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/izabely-furtado" class="avatar"><img src="https://avatars3.githubusercontent.com/u/14110922?v=3&amp;s=60" width="48" height="48"></a> <a href="https://github.com/izabely-furtado">izabely-furtado</a> maintains <a href="https://github.com/izabely-furtado/ArCondicionado">Arcondicionado</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/izabely-furtado/ArCondicionado/tarball/master" class="tar">tar</a><a href="https://github.com/izabely-furtado/ArCondicionado/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
